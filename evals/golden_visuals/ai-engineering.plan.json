@@ -1,0 +1,64 @@
+{
+ "visuals": [
+  {
+   "id": "v1",
+   "section": "The review workflow",
+   "intent": "show_process",
+   "renderer": "mermaid",
+   "placement": {
+    "after": "heading"
+   },
+   "title": "AI code review flow",
+   "alt": "Pull request to AI comment to human decision",
+   "caption": "Figure 1: Where the AI reviewer sits in the pull request flow.",
+   "source": {
+    "mermaid": "flowchart LR\n  PR --> Diff\n  Diff --> AI\n  AI --> Comment\n  Comment --> Human"
+   },
+   "rationale": "Four connected steps"
+  },
+  {
+   "id": "v2",
+   "section": "Time saved per stage",
+   "intent": "timeline",
+   "renderer": "svg",
+   "placement": {
+    "after": "heading"
+   },
+   "title": "Review timeline",
+   "alt": "Timeline of a review with and without AI",
+   "caption": "Figure 2: A review timeline with an AI first pass.",
+   "source": {
+    "template": "timeline",
+    "data": {
+     "items": [
+      [
+       "Open PR",
+       "AI first pass"
+      ],
+      [
+       "Comments",
+       "Human review"
+      ],
+      [
+       "Merge",
+       "After human approval"
+      ]
+     ]
+    }
+   },
+   "rationale": "Section is about elapsed time per stage"
+  }
+ ],
+ "sections": [
+  {
+   "section": "Conclusion",
+   "visual": "none",
+   "reason": "Prose summary"
+  },
+  {
+   "section": "A minimal review script",
+   "visual": "none",
+   "reason": "The draft already shows this code"
+  }
+ ]
+}

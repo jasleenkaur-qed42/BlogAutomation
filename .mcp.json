@@ -1,0 +1,29 @@
+{
+  "mcpServers": {
+    "blog-drive": {
+      "command": "./.venv/bin/python",
+      "args": [
+        "mcp_servers/drive_server.py"
+      ]
+    },
+    "blog-slack": {
+      "command": "./.venv/bin/python",
+      "args": [
+        "mcp_servers/slack_server.py"
+      ]
+    },
+    "media-pipeline": {
+      "command": "./.venv/bin/python",
+      "args": [
+        "mcp_servers/image_gen_server.py"
+      ]
+    },
+    "chrome-devtools": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "chrome-devtools-mcp@latest"
+      ]
+    }
+  }
+}

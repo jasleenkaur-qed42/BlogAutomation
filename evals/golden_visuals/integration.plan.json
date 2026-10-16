@@ -1,0 +1,88 @@
+{
+ "visuals": [
+  {
+   "id": "v1",
+   "section": "Enable sign-in in the Firebase console",
+   "intent": "show_ui",
+   "renderer": "screenshot",
+   "placement": {
+    "after": "paragraph",
+    "n": 1
+   },
+   "title": "Firebase sign-in providers",
+   "alt": "Firebase console Authentication providers list",
+   "caption": "Figure 1: The Email/Password provider in the Firebase console.",
+   "required": false,
+   "fallback": "scene",
+   "source": {
+    "url": "https://console.firebase.google.com/",
+    "steps": [
+     "Open the project",
+     "Open Authentication",
+     "Open Sign-in method"
+    ],
+    "requires_login": true,
+    "redact_note": "Hide the project id and any email addresses"
+   },
+   "rationale": "A real console screen is the evidence",
+   "fallback_scene": {
+    "type": "ui_screen",
+    "app": "Firebase console",
+    "heading": "Sign-in method",
+    "options": [
+     {
+      "label": "Email/Password",
+      "detail": "Enabled"
+     }
+    ]
+   }
+  },
+  {
+   "id": "v2",
+   "section": "How the pieces connect",
+   "intent": "show_architecture",
+   "renderer": "mermaid",
+   "placement": {
+    "after": "heading"
+   },
+   "title": "Authentication flow",
+   "alt": "App to Firebase and back with a token",
+   "caption": "Figure 2: Credentials go to Firebase and a token comes back.",
+   "source": {
+    "mermaid": "sequenceDiagram\n  App->>Firebase: email and password\n  Firebase-->>App: user and token"
+   },
+   "rationale": "Sequence between two systems"
+  },
+  {
+   "id": "v3",
+   "section": "Which stack you are using",
+   "intent": "brand",
+   "renderer": "logo",
+   "placement": {
+    "after": "heading"
+   },
+   "title": "Stack",
+   "alt": "React Native and Firebase logos",
+   "caption": "Figure 3: React Native and Firebase.",
+   "source": {
+    "names": [
+     "react",
+     "firebase"
+    ]
+   },
+   "rationale": "Names two products"
+  }
+ ],
+ "sections": [
+  {
+   "section": "Conclusion",
+   "visual": "none",
+   "reason": "Prose summary"
+  },
+  {
+   "section": "Sign in from the app",
+   "visual": "none",
+   "reason": "The draft already shows this code"
+  }
+ ]
+}

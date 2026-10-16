@@ -1,0 +1,17 @@
+{"visuals": [
+ {"id": "v1", "section": "From brief to first draft", "intent": "hero", "renderer": "ai_image",
+  "placement": {"after": "heading"}, "title": "Idea to site", "alt": "A developer and an AI assistant sketching a website together",
+  "caption": "Figure 1: A developer and an AI assistant shaping a website from a brief.",
+  "source": {"prompt": "Flat editorial illustration of a developer at a desk with a friendly abstract AI assistant, a browser wireframe floating between them, soft blue and warm orange palette, clean background, no text, no logos", "aspect": "16:9", "style": "flat editorial"},
+  "rationale": "Opening concept with no literal structure to diagram"},
+ {"id": "v2", "section": "Where the hours go now", "intent": "show_process", "renderer": "mermaid",
+  "placement": {"after": "heading"}, "title": "AI-assisted build flow", "alt": "Flow from brief to review to launch",
+  "caption": "Figure 2: The AI-assisted flow from brief to launch.",
+  "source": {"mermaid": "flowchart LR\n  Brief --> Draft\n  Draft --> Review\n  Review --> Fix\n  Fix --> Launch"},
+  "rationale": "Text describes sequential stages"},
+ {"id": "v3", "section": "Old workflow versus AI-assisted workflow", "intent": "compare", "renderer": "svg",
+  "placement": {"after": "heading"}, "title": "Classic versus AI-assisted", "alt": "Two columns comparing classic and AI-assisted stages",
+  "caption": "Figure 3: Classic and AI-assisted workflows side by side.",
+  "source": {"template": "comparison", "data": {"left": "Classic", "right": "AI-assisted", "rows": [["Feedback", "Late", "Early"], ["Scaffolding", "Manual", "Generated"]]}},
+  "rationale": "Section compares two workflows on shared dimensions"}],
+ "sections": [{"section": "Conclusion", "visual": "none", "reason": "Prose summary"}]}

@@ -1,0 +1,23 @@
+{
+  "max_iterations": 3,
+  "max_mechanical_retries": 2,
+  "max_malformed_retries": 2,
+  "max_high": 0,
+  "max_critical": 0,
+  "stagnation_patience": 2,
+  "lock_ttl_seconds": 7200,
+  "verify_min_coverage": 0.99,
+  "max_visual_retries": 1,
+  "hard_gates": {
+    "min_total_score": 75,
+    "min_dimension_percentage": 60,
+    "min_dimension_scores": {
+      "seo": 80
+    },
+    "factual_correctness": true,
+    "min_claim_checks": 1,
+    "_note": "factual_correctness=true ENABLES the factual-correctness gate; the review's own value is factual_correctness.passed."
+  },
+  "max_score_with_high_issue": 70,
+  "max_verifier_claims": 5
+}

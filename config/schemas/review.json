@@ -1,0 +1,165 @@
+{
+ "type": "object",
+ "required": [
+  "checklist",
+  "issues",
+  "summary"
+ ],
+ "properties": {
+  "checklist": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "item",
+     "pass",
+     "evidence"
+    ],
+    "properties": {
+     "item": {
+      "type": "string"
+     },
+     "pass": {
+      "type": "boolean"
+     },
+     "evidence": {
+      "type": "string"
+     },
+     "issue_id": {
+      "type": "string"
+     }
+    },
+    "if": {
+     "properties": {
+      "pass": {
+       "const": false
+      }
+     }
+    },
+    "then": {
+     "required": [
+      "issue_id"
+     ]
+    }
+   }
+  },
+  "issues": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "id",
+     "severity",
+     "category",
+     "anchor",
+     "description"
+    ],
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "severity": {
+      "enum": [
+       "CRITICAL",
+       "HIGH",
+       "MEDIUM",
+       "LOW"
+      ]
+     },
+     "category": {
+      "type": "string"
+     },
+     "anchor": {
+      "type": "string"
+     },
+     "description": {
+      "type": "string"
+     },
+     "resolved_from_previous": {
+      "type": "boolean"
+     },
+     "dimension": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "resolved_previous": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "summary": {
+   "type": "string"
+  },
+  "scores": {
+   "type": "object",
+   "additionalProperties": {
+    "type": "object",
+    "required": [
+     "score",
+     "evidence"
+    ],
+    "properties": {
+     "score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+     },
+     "evidence": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "factual_correctness": {
+   "type": "object",
+   "required": [
+    "passed",
+    "evidence"
+   ],
+   "properties": {
+    "passed": {
+     "type": "boolean"
+    },
+    "evidence": {
+     "type": "string"
+    }
+   }
+  },
+  "claim_checks": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "claim",
+     "source",
+     "verdict",
+     "evidence"
+    ],
+    "properties": {
+     "claim": {
+      "type": "string"
+     },
+     "source": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "verdict": {
+      "enum": [
+       "SUPPORTED",
+       "UNSUPPORTED",
+       "CONTRADICTED"
+      ]
+     },
+     "evidence": {
+      "type": "string"
+     }
+    }
+   }
+  }
+ }
+}

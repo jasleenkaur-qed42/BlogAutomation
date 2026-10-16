@@ -1,0 +1,55 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(./.venv/bin/python scripts/blog.py:*)",
+      "mcp__blog-drive__create_doc",
+      "mcp__blog-drive__search_docs",
+      "mcp__blog-drive__read_doc",
+      "mcp__blog-drive__read_doc_markdown",
+      "mcp__blog-slack__post_message",
+      "mcp__media-pipeline__create_asset",
+      "mcp__chrome-devtools__navigate_page",
+      "mcp__chrome-devtools__wait_for",
+      "mcp__chrome-devtools__resize_page",
+      "mcp__chrome-devtools__take_screenshot",
+      "mcp__chrome-devtools__list_pages",
+      "mcp__chrome-devtools__select_page"
+    ],
+    "deny": [
+      "mcp__claude_ai_Google_Drive",
+      "mcp__claude_ai_Slack",
+      "Read(./.env)",
+      "Read(./secrets/**)",
+      "Edit(./.env)",
+      "Edit(./secrets/**)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Read|Edit|Write|NotebookEdit|Grep|Glob|Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/protect_secrets.py\""
+          }
+        ]
+      },
+      {
+        "matcher": "mcp__blog-drive__create_doc|mcp__blog-slack__post_message",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR/.venv/bin/python\" \"$CLAUDE_PROJECT_DIR/scripts/blog.py\" allow-delivery"
+          }
+        ]
+      }
+    ]
+  },
+  "enabledMcpjsonServers": [
+    "blog-drive",
+    "blog-slack",
+    "media-pipeline",
+    "chrome-devtools"
+  ]
+}

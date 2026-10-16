@@ -1,0 +1,286 @@
+{
+  "checklist": [
+    {
+      "item": "factual_accuracy",
+      "pass": true,
+      "evidence": "The WCAG 4.5:1 figure and the invalid-at-computed-value-time behaviour of undefined var() are correct. The remaining claims are definitional."
+    },
+    {
+      "item": "tone_matches_guidelines",
+      "pass": true,
+      "evidence": "The tone is plain and not promotional. It is more generic than the 'practical and friendly' the brief asks for, which is covered in i4."
+    },
+    {
+      "item": "answers_brief",
+      "pass": false,
+      "evidence": "The brief requires a short code example and common implementation mistakes, and neither is present. There is also no small-team angle and no guidance on when adoption is worth the effort.",
+      "issue_id": "i1"
+    },
+    {
+      "item": "no_unsupported_claims",
+      "pass": true,
+      "evidence": "The substantive claims are verifiable. The `claims` front matter is empty and the sources are not linked inline (i10)."
+    },
+    {
+      "item": "audience_fit_check",
+      "pass": false,
+      "evidence": "Audience inferred as community (front-end leads, intermediate). The Overview defines tokens at beginner level, and the draft never addresses small teams.",
+      "issue_id": "i4"
+    },
+    {
+      "item": "title_matches_intro",
+      "pass": true,
+      "evidence": "The title and intro agree with each other (an overview of why tokens matter). Both drift from the brief's small-team framing (i12).",
+      "issue_id": "i12"
+    },
+    {
+      "item": "skim_test",
+      "pass": false,
+      "evidence": "The intro is generic setup ('In this article we will discuss') with no opening story or hook. The conclusion repeats the intro.",
+      "issue_id": "i5"
+    },
+    {
+      "item": "conclusion_lands_thought",
+      "pass": false,
+      "evidence": "'Design tokens are an important part of design systems. Teams of any size should consider using design tokens.' restates the title and gives no thought to carry away.",
+      "issue_id": "i6"
+    },
+    {
+      "item": "sentence_boundaries",
+      "pass": true,
+      "evidence": "Sentences are clean and complete, with no run-ons, comma splices or stray capitals."
+    },
+    {
+      "item": "code_correctness",
+      "pass": true,
+      "evidence": "Skipped, no code. The missing code is raised under answers_brief (i1)."
+    },
+    {
+      "item": "human_words",
+      "pass": true,
+      "evidence": "No flagged words and 0 em dashes. 'foundational building block' and 'an important concept' are mildly stock phrasing."
+    },
+    {
+      "item": "humans_and_machines",
+      "pass": true,
+      "evidence": "The FAQ has 5 genuine next questions, and the answers are tight and correct. Headings 'Overview', 'Benefits', 'Usage' and 'Types of tokens' are vague, and there is no TLDR or early claim (i13).",
+      "issue_id": "i13"
+    },
+    {
+      "item": "beats_the_docs",
+      "pass": false,
+      "evidence": "The reference page is the W3C Design Tokens Community Group site (and MDN for custom properties). The body sections define tokens at the same level as those pages and add nothing. Only the FAQ goes beyond them.",
+      "issue_id": "i8"
+    },
+    {
+      "item": "original_insight",
+      "pass": false,
+      "evidence": "The quotable lines are the 'three similar greens' migration tip and the 'keep it inline if it will not repeat or theme' rule. The brief's original angle (tokens are not only for large organisations) is never argued.",
+      "issue_id": "i3"
+    },
+    {
+      "item": "so_what",
+      "pass": false,
+      "evidence": "The reader learns what tokens are but not why a small team should adopt them or when it pays off. The 'Benefits' section is two sentences.",
+      "issue_id": "i7"
+    },
+    {
+      "item": "voice_positive_framing",
+      "pass": true,
+      "evidence": "V1 count 0. V2 count 0. The framing is neutral and positive."
+    },
+    {
+      "item": "voice_active",
+      "pass": true,
+      "evidence": "V3 count 3: 'They are used in place of', 'Design tokens can be used in CSS' and 'tokens ... are named'. These are minor and the actor is mostly irrelevant (i11).",
+      "issue_id": "i11"
+    }
+  ],
+  "issues": [
+    {
+      "id": "i1",
+      "severity": "HIGH",
+      "category": "structure",
+      "dimension": "examples_implementation",
+      "anchor": "## Usage",
+      "description": "The brief's must_include items are a short code example (React + CSS variables) and common implementation mistakes. The draft has no code, and the Usage section only mentions CSS variables. Add a `:root { --color-primary: ... }` block with a React component consuming `var(--color-primary)`, and a mistakes section (naming by value, e.g. --blue-500 used as a semantic role; too many tokens too early; skipping semantic aliases).",
+      "resolved_from_previous": false
+    },
+    {
+      "id": "i2",
+      "severity": "HIGH",
+      "category": "payoff",
+      "dimension": "practical_usefulness",
+      "anchor": "## Types of tokens",
+      "description": "The draft lists token types without telling a front-end lead what to do. Add a threshold for when tokens pay off, a minimal starter set, and a naming approach.",
+      "resolved_from_previous": false
+    },
+    {
+      "id": "i3",
+      "severity": "HIGH",
+      "category": "originality",
+      "dimension": "originality",
+      "anchor": "Design tokens are an important concept in modern design systems.",
+      "description": "The brief's original_angle (the misconception that tokens only help large organisations) is unused. Argue it from reasoning: a small team pays no coordination cost, and tokens make theming and rebrands one-file changes. Do not invent personal anecdotes or metrics.",
+      "resolved_from_previous": false
+    },
+    {
+      "id": "i4",
+      "severity": "HIGH",
+      "category": "audience",
+      "dimension": "audience_fit",
+      "anchor": "Design tokens are named entities that store visual design attributes.",
+      "description": "For intermediate front-end leads, the opening definitions are textbook-level and never address small-team constraints (no dedicated design-system staff, limited time). Cut the definition to one line and add the small-team trade-offs.",
+      "resolved_from_previous": false
+    },
+    {
+      "id": "i5",
+      "severity": "HIGH",
+      "category": "skim",
+      "dimension": "structure_clarity",
+      "anchor": "In this article we will discuss design tokens and why design tokens matter",
+      "description": "The intro is generic setup with no opening scene or hook, and it repeats 'design tokens' three times. Rewrite it to open with a concrete small-team problem, such as the same hex value in 40 files, and promise the payoff. Do not fabricate a personal story.",
+      "resolved_from_previous": false
+    },
+    {
+      "id": "i6",
+      "severity": "HIGH",
+      "category": "conclusion",
+      "dimension": "structure_clarity",
+      "anchor": "Teams of any size should consider using design tokens.",
+      "description": "The conclusion restates the title and gives the reader no thought to keep. Call back to the intro's problem and end on one idea, for example that tokens earn their place once a value appears twice or must change with a theme.",
+      "resolved_from_previous": false
+    },
+    {
+      "id": "i7",
+      "severity": "HIGH",
+      "category": "payoff",
+      "dimension": "practical_usefulness",
+      "anchor": "Design tokens are a useful idea for teams that care about consistency.",
+      "description": "The Benefits section asserts value without explaining it. Add concrete mechanisms (single source of truth, theming, safer refactors) and a clear decision rule for when adoption is worth it, which is the brief's purpose.",
+      "resolved_from_previous": false
+    },
+    {
+      "id": "i8",
+      "severity": "HIGH",
+      "category": "originality",
+      "dimension": "originality",
+      "anchor": "Teams can store design tokens in JSON files and transform them into the formats that each platform needs.",
+      "description": "The Overview, Usage and Types sections paraphrase the W3C DTCG and MDN introductions. Compress them to a line with a link and spend the space on judgment, trade-offs and the worked example.",
+      "resolved_from_previous": false
+    },
+    {
+      "id": "i9",
+      "severity": "MEDIUM",
+      "category": "accuracy",
+      "dimension": "tradeoffs_limitations",
+      "anchor": "## Benefits",
+      "description": "The article has no cost or limits section covering over-tokenizing, naming debt or maintenance. Only the FAQ hints at when not to tokenize. Add a short trade-offs section.",
+      "resolved_from_previous": false
+    },
+    {
+      "id": "i10",
+      "severity": "MEDIUM",
+      "category": "accuracy",
+      "dimension": "references_support",
+      "anchor": "Check every text and background pair against the WCAG minimum contrast ratio of 4.5:1 for body text.",
+      "description": "The claim is correct, but the `claims` front matter is empty and there is no inline link. The W3C DTCG, MDN and WCAG references appear only in the final list. Link them in the text and register the claims.",
+      "resolved_from_previous": false
+    },
+    {
+      "id": "i11",
+      "severity": "MEDIUM",
+      "category": "tone",
+      "dimension": "structure_clarity",
+      "anchor": "They are used in place of hard-coded values in order to maintain a scalable and consistent visual system.",
+      "description": "The sentence is passive, with the actor missing. Rewrite: 'You use them instead of hard-coded values, so your visual system stays consistent as it grows.' Also fix 'Design tokens can be used in CSS' to 'You can use design tokens in CSS'.",
+      "resolved_from_previous": false
+    },
+    {
+      "id": "i12",
+      "severity": "MEDIUM",
+      "category": "title",
+      "dimension": "seo",
+      "anchor": "# An overview of design tokens and why they matter",
+      "description": "The brief's topic is why small teams should adopt tokens. The generic title and the 'of every size' intro drop that angle and the search intent. Suggested title: 'Why small teams should adopt design tokens'.",
+      "resolved_from_previous": false
+    },
+    {
+      "id": "i13",
+      "severity": "MEDIUM",
+      "category": "structure",
+      "dimension": "seo",
+      "anchor": "## Overview",
+      "description": "The headings 'Overview', 'Benefits', 'Usage' and 'Types of tokens' are not descriptive. There is no TLDR or early claim for machine readers. Use headings such as 'Why small teams benefit from design tokens' and add a 3-line summary.",
+      "resolved_from_previous": false
+    }
+  ],
+  "scores": {
+    "technical_accuracy": {
+      "score": 85,
+      "evidence": "The WCAG 4.5:1 figure and the undefined var() behaviour are correct. The statements about JSON and CSS variables are accurate. The draft makes few claims."
+    },
+    "technical_depth": {
+      "score": 35,
+      "evidence": "Definitions only. There is no code, no token architecture (primitive vs semantic) and no build discussion beyond the FAQ."
+    },
+    "practical_usefulness": {
+      "score": 40,
+      "evidence": "The FAQ gives usable advice, but the body offers no decision rule, example or mistakes list."
+    },
+    "originality": {
+      "score": 25,
+      "evidence": "The perspective is generic and the original_angle is unused. Only some FAQ items add insight."
+    },
+    "structure_clarity": {
+      "score": 55,
+      "evidence": "The ordering is logical but the headings are vague, the intro is flat and the conclusion is a recap."
+    },
+    "examples_implementation": {
+      "score": 20,
+      "evidence": "No code example despite the brief requiring one, and no visuals."
+    },
+    "tradeoffs_limitations": {
+      "score": 40,
+      "evidence": "Only FAQ hints (inline one-offs, build step later). There is no dedicated cost or limits discussion."
+    },
+    "references_support": {
+      "score": 55,
+      "evidence": "Three real, relevant references are listed, but none is cited inline and the claims front matter is empty."
+    },
+    "seo": {
+      "score": 55,
+      "evidence": "Keywords appear in the title, description and body. The headings are generic and do not target the small-team intent."
+    },
+    "audience_fit": {
+      "score": 40,
+      "evidence": "Beginner-level definitions for an intermediate lead, and the small-team context is absent."
+    }
+  },
+  "factual_correctness": {
+    "passed": true,
+    "evidence": "The WCAG 1.4.3 4.5:1 ratio for body text and the CSS invalid-at-computed-value-time fallback for undefined var() are correct. No wrong or outdated claims found."
+  },
+  "claim_checks": [
+    {
+      "claim": "Check every text and background pair against the WCAG minimum contrast ratio of 4.5:1 for body text.",
+      "source": "https://www.w3.org/TR/WCAG22/#contrast-minimum",
+      "verdict": "SUPPORTED",
+      "evidence": "WCAG 2.2 SC 1.4.3 requires 4.5:1 for normal-size text."
+    },
+    {
+      "claim": "a var() that points at an undefined property makes the declaration invalid at computed-value time and the browser falls back to the inherited or initial value",
+      "source": "https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties",
+      "verdict": "SUPPORTED",
+      "evidence": "The CSS Variables spec defines this behaviour, called 'invalid at computed-value time', which resolves to inherited or initial."
+    },
+    {
+      "claim": "Teams can store design tokens in JSON files and transform them into the formats that each platform needs.",
+      "source": "https://www.w3.org/community/design-tokens/",
+      "verdict": "SUPPORTED",
+      "evidence": "The W3C DTCG format is JSON-based, and transformation tools exist."
+    }
+  ],
+  "resolved_previous": [],
+  "summary": "Gate: the article is worth writing as a case for small-team adoption, but the draft never makes that case, so it does not earn the read; it reads as a generic overview with no hook. Scorecard: check 1 fail, 2 flag, 3 fail, 4 fail, 5 pass, 6 skipped (no code), 7 pass, 8 pass, 9 flag, 10 fail, 11 fail, 12 fail, V1 0, V2 0, V3 3. The facts are accurate, but the brief's code example, common mistakes and original angle are missing."
+}

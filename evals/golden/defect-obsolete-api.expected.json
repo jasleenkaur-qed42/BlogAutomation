@@ -1,0 +1,1 @@
+{"expected_categories": ["accuracy"], "expected_gate_failures": ["technical_accuracy"], "allowed_extra_gate_failures": {"factual_correctness": "The false token() claim is a materially wrong statement, so the factual gate fails by design."}, "expected_claims": {"wcag minimum contrast": "SUPPORTED", "-- prefix": "SUPPORTED", "native `token()` function": "CONTRADICTED"}}

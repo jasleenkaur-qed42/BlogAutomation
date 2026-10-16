@@ -1,0 +1,13 @@
+pyyaml>=6
+jsonschema>=4
+mcp<2
+google-api-python-client
+google-auth
+markdown
+matplotlib
+pillow
+google-auth-oauthlib
+cairosvg
+defusedxml
+mammoth>=1.13
+markdownify>=1.2

@@ -1,0 +1,223 @@
+{
+  "checklist": [
+    {
+      "item": "factual_accuracy",
+      "pass": false,
+      "evidence": "The draft says CSS has a native `token()` function in every current browser. No such CSS function exists. The CSS custom properties, WCAG 4.5:1 and DTCG 2025.10 statements are correct.",
+      "issue_id": "i1"
+    },
+    {
+      "item": "tone_matches_guidelines",
+      "pass": true,
+      "evidence": "Practical and friendly. No hype, no vendor comparison, no invented personal experience."
+    },
+    {
+      "item": "answers_brief",
+      "pass": true,
+      "evidence": "Covers why small teams benefit, when to adopt, common mistakes and a React + CSS variables example. The must_include code example is present but invalid (see i2).",
+      "issue_id": "i2"
+    },
+    {
+      "item": "no_unsupported_claims",
+      "pass": false,
+      "evidence": "The `token()` browser-support claim has no source and is contradicted by the CSS specs and MDN.",
+      "issue_id": "i1"
+    },
+    {
+      "item": "audience_fit_check",
+      "pass": true,
+      "evidence": "Audience inferred as community (front-end leads who are peers). The register is peer-level and the cost reasoning is concrete."
+    },
+    {
+      "item": "title_matches_intro",
+      "pass": true,
+      "evidence": "The title promises why small teams should adopt tokens. The intro sets up the forty-file problem and that exact question."
+    },
+    {
+      "item": "skim_test",
+      "pass": true,
+      "evidence": "Title, intro (a relatable green-hex story) and conclusion form one arc. A skimmer gets the point."
+    },
+    {
+      "item": "conclusion_lands_thought",
+      "pass": true,
+      "evidence": "The conclusion calls back to the forty-file green search and closes with the one-line-edit idea. It is partly a recap, but the callback holds."
+    },
+    {
+      "item": "sentence_boundaries",
+      "pass": true,
+      "evidence": "Sentences are short and clean. I found no run-ons, comma splices or stray capitals."
+    },
+    {
+      "item": "code_correctness",
+      "pass": false,
+      "evidence": "The CSS block uses `$color-primary: ...` declarations and `token(color-primary)`, which are not valid CSS. The prose says `--` prefix and `var()`, and the React snippet uses `var(--color-surface)`. The CSS and React samples contradict each other, and the CSS one does not run.",
+      "issue_id": "i2"
+    },
+    {
+      "item": "human_words",
+      "pass": true,
+      "evidence": "No flagged words and 0 em dashes found. The phrasing is plain."
+    },
+    {
+      "item": "humans_and_machines",
+      "pass": true,
+      "evidence": "The FAQ has 5 genuine next questions, headings are descriptive and sentence case, and a clear claim sits in the intro. A TLDR is not needed at about 900 words."
+    },
+    {
+      "item": "beats_the_docs",
+      "pass": true,
+      "evidence": "The reference page is MDN's 'Using CSS custom properties'. The article adds a cost-per-use adoption heuristic and a mistakes list. It offers no hands-on failure or measured result.",
+      "issue_id": "i3"
+    },
+    {
+      "item": "original_insight",
+      "pass": true,
+      "evidence": "The quotable insight is 'The repeat count and the planned changes decide the payoff, not the size of the company.' It is reasoning-based and reasonably sharp but thin.",
+      "issue_id": "i3"
+    },
+    {
+      "item": "so_what",
+      "pass": true,
+      "evidence": "The reader leaves with clear adoption triggers (repeating values, planned theming, naming disputes), a start-small path and a mistakes list."
+    },
+    {
+      "item": "voice_positive_framing",
+      "pass": true,
+      "evidence": "V1: about 3 instances. V2: about 2 instances. Several lines open on the problem or the negative. See i4.",
+      "issue_id": "i4"
+    },
+    {
+      "item": "voice_active",
+      "pass": true,
+      "evidence": "V3: no meaningful passives. The few passive-ish constructions are justified."
+    }
+  ],
+  "issues": [
+    {
+      "id": "i1",
+      "severity": "HIGH",
+      "category": "accuracy",
+      "dimension": "technical_accuracy",
+      "anchor": "CSS now has a native `token()` function in every current browser, so no `var()` is needed:",
+      "description": "There is no native CSS `token()` function. Custom properties are read with `var()`, as the draft's own MDN claim says. This is an invented API stated as universal browser support, with no source. Delete the sentence and the `token()` usage. Use `var(--color-primary)`.",
+      "resolved_from_previous": false
+    },
+    {
+      "id": "i2",
+      "severity": "HIGH",
+      "category": "code",
+      "dimension": "examples_implementation",
+      "anchor": "$color-primary: #0a5c36;",
+      "description": "The CSS sample declares properties with a Sass-style `$` prefix and reads them with the nonexistent `token()`, so it will not run. The prose and the React snippet use `--name` and `var(--name)`. Rewrite it as `--color-primary: #0a5c36;` inside `:root`, `[data-theme=\"dark\"] { --color-surface: #14181c; }`, and `.button { background: var(--color-primary); padding: var(--space-2) var(--space-4); }`.",
+      "resolved_from_previous": false
+    },
+    {
+      "id": "i3",
+      "severity": "MEDIUM",
+      "category": "originality",
+      "dimension": "originality",
+      "anchor": "The repeat count and the planned changes decide the payoff, not the size of the company.",
+      "description": "The adoption heuristic is a useful angle, but it stays abstract. The article could add a concrete trade-off the docs omit, for example what a small team should do about the `blue-500` naming layer or a worked rebrand edit count. Build it from reasoning and verified sources, not invented experience.",
+      "resolved_from_previous": false
+    },
+    {
+      "id": "i4",
+      "severity": "MEDIUM",
+      "category": "tone",
+      "dimension": "structure_clarity",
+      "anchor": "Small teams hit the same wall, and nobody on the team has the job of catching it.",
+      "description": "Problem-first and negative framings. Other examples: the bullet label 'Ignoring the cost.' and 'Instead of writing `#0a5c36` in forty places'. Lead with the gain, for example 'Small teams get the same payoff, and a shared file gives everyone one place to catch it.' Rename the bullet to 'Plan for the indirection.'",
+      "resolved_from_previous": false
+    },
+    {
+      "id": "i5",
+      "severity": "LOW",
+      "category": "accuracy",
+      "dimension": "references_support",
+      "anchor": "[W3C Design Tokens Community Group](https://www.w3.org/community/design-tokens/)",
+      "description": "The DTCG stable-version claim cites an announcement URL in the front matter, but the References list links only the group's landing page. Link the announcement post in the text or References.",
+      "resolved_from_previous": false
+    }
+  ],
+  "scores": {
+    "technical_accuracy": {
+      "score": 30,
+      "evidence": "The invented `token()` function and the `$` syntax are wrong. The core CSS variable, WCAG and DTCG statements are accurate."
+    },
+    "technical_depth": {
+      "score": 60,
+      "evidence": "Covers the cascade, theming, the invalid-at-computed-value-time behavior and when to add a build step. It stays introductory."
+    },
+    "practical_usefulness": {
+      "score": 55,
+      "evidence": "Adoption triggers and the mistakes list are applicable. The primary code example would mislead a reader who copies it."
+    },
+    "originality": {
+      "score": 55,
+      "evidence": "The cost-per-use adoption reasoning and the misconception angle are present. The rest is standard guidance."
+    },
+    "structure_clarity": {
+      "score": 82,
+      "evidence": "The flow runs from problem to concept to code to when to adopt, then mistakes, trade-offs and FAQ. Headings are clear."
+    },
+    "examples_implementation": {
+      "score": 35,
+      "evidence": "The CSS sample is invalid and contradicts the React sample. The React snippet itself is fine."
+    },
+    "tradeoffs_limitations": {
+      "score": 75,
+      "evidence": "Covers runtime resolution, no compile-time typo detection, indirection cost and when to wait."
+    },
+    "references_support": {
+      "score": 70,
+      "evidence": "MDN, DTCG and WCAG are real and relevant. The token() claim is unsupported."
+    },
+    "seo": {
+      "score": 75,
+      "evidence": "The primary keyword is in the title, intro and headings. The description is good, and secondary terms appear."
+    },
+    "audience_fit": {
+      "score": 78,
+      "evidence": "The tone suits front-end leads at small teams, with a practical, friendly register."
+    }
+  },
+  "factual_correctness": {
+    "passed": false,
+    "evidence": "The claim that CSS has a native `token()` function in all current browsers is false, and the CSS sample built on it is invalid."
+  },
+  "claim_checks": [
+    {
+      "claim": "CSS custom properties are declared with a -- prefix and read with var(), and they cascade and inherit",
+      "source": "https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties",
+      "verdict": "SUPPORTED",
+      "evidence": "MDN documents this behavior."
+    },
+    {
+      "claim": "CSS now has a native `token()` function in every current browser, so no `var()` is needed",
+      "source": null,
+      "verdict": "CONTRADICTED",
+      "evidence": "No `token()` function exists in the CSS specs or MDN. Custom properties use `var()`."
+    },
+    {
+      "claim": "The W3C Design Tokens Community Group published the first stable version (2025.10) of its format in October 2025; it is a Community Group specification, not a W3C Standard",
+      "source": "https://www.w3.org/community/design-tokens/2025/10/28/design-tokens-specification-reaches-first-stable-version/",
+      "verdict": "SUPPORTED",
+      "evidence": "The group announced the stable 2025.10 spec on 28 October 2025. It is a Community Group report, not a W3C Recommendation. I recalled this and did not re-fetch it."
+    },
+    {
+      "claim": "WCAG minimum contrast ratio of 4.5:1 for body text",
+      "source": "https://www.w3.org/TR/WCAG22/#contrast-minimum",
+      "verdict": "SUPPORTED",
+      "evidence": "WCAG 2.2 SC 1.4.3 requires 4.5:1 for normal text."
+    },
+    {
+      "claim": "A var() pointing at an undefined property is invalid at computed-value time and the browser falls back to the inherited or initial value",
+      "source": "https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties",
+      "verdict": "SUPPORTED",
+      "evidence": "This matches the CSS Variables spec behavior for invalid-at-computed-value-time declarations."
+    }
+  ],
+  "resolved_previous": [],
+  "summary": "Gate: the article is worth writing because forty-file hex hunts hit small teams too, and it earns the read through a relatable opening and a concrete adoption heuristic. Scorecard: audience pass, title pass, skim pass, conclusion pass, sentences pass, code fail (invalid `$` and `token()` syntax), words pass, fact-check fail (invented `token()` API), humans/machines pass, beats docs flag, originality flag, so what pass, V1/V2 flag, V3 pass."
+}

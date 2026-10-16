@@ -1,0 +1,367 @@
+{
+ "type": "object",
+ "required": [
+  "visuals",
+  "sections"
+ ],
+ "additionalProperties": false,
+ "properties": {
+  "visuals": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "id",
+     "section",
+     "intent",
+     "renderer",
+     "placement",
+     "title",
+     "alt",
+     "caption",
+     "source",
+     "rationale"
+    ],
+    "additionalProperties": false,
+    "properties": {
+     "id": {
+      "type": "string",
+      "pattern": "^v[0-9]+$"
+     },
+     "section": {
+      "type": "string",
+      "minLength": 1
+     },
+     "intent": {
+      "type": "string"
+     },
+     "renderer": {
+      "enum": [
+       "mermaid",
+       "svg",
+       "chart",
+       "screenshot",
+       "code",
+       "logo",
+       "ai_image",
+       "scene"
+      ]
+     },
+     "placement": {
+      "type": "object",
+      "required": [
+       "after"
+      ],
+      "additionalProperties": false,
+      "properties": {
+       "after": {
+        "enum": [
+         "heading",
+         "paragraph"
+        ]
+       },
+       "n": {
+        "type": "integer",
+        "minimum": 1
+       }
+      }
+     },
+     "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+     },
+     "alt": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 200
+     },
+     "caption": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 200
+     },
+     "required": {
+      "type": "boolean"
+     },
+     "fallback": {
+      "enum": [
+       "none",
+       "scene"
+      ]
+     },
+     "source": {
+      "type": "object"
+     },
+     "rationale": {
+      "type": "string",
+      "minLength": 3
+     },
+     "fallback_scene": {
+      "type": "object",
+      "required": [
+       "type"
+      ]
+     }
+    },
+    "allOf": [
+     {
+      "if": {
+       "properties": {
+        "renderer": {
+         "const": "mermaid"
+        }
+       }
+      },
+      "then": {
+       "properties": {
+        "source": {
+         "required": [
+          "mermaid"
+         ],
+         "properties": {
+          "mermaid": {
+           "type": "string",
+           "minLength": 10
+          }
+         }
+        }
+       }
+      }
+     },
+     {
+      "if": {
+       "properties": {
+        "renderer": {
+         "const": "svg"
+        }
+       }
+      },
+      "then": {
+       "properties": {
+        "source": {
+         "required": [
+          "template",
+          "data"
+         ],
+         "properties": {
+          "template": {
+           "enum": [
+            "comparison",
+            "timeline",
+            "layers"
+           ]
+          },
+          "data": {
+           "type": "object"
+          }
+         }
+        }
+       }
+      }
+     },
+     {
+      "if": {
+       "properties": {
+        "renderer": {
+         "const": "chart"
+        }
+       }
+      },
+      "then": {
+       "properties": {
+        "source": {
+         "required": [
+          "type",
+          "labels",
+          "series"
+         ],
+         "properties": {
+          "type": {
+           "enum": [
+            "bar",
+            "line"
+           ]
+          }
+         }
+        }
+       }
+      }
+     },
+     {
+      "if": {
+       "properties": {
+        "renderer": {
+         "const": "screenshot"
+        }
+       }
+      },
+      "then": {
+       "properties": {
+        "source": {
+         "required": [
+          "url",
+          "requires_login"
+         ],
+         "properties": {
+          "url": {
+           "type": "string",
+           "pattern": "^https?://"
+          },
+          "steps": {
+           "type": "array",
+           "items": {
+            "type": "string"
+           }
+          },
+          "requires_login": {
+           "type": "boolean"
+          },
+          "redact_note": {
+           "type": "string"
+          },
+          "viewport": {
+           "type": "object"
+          }
+         }
+        }
+       }
+      }
+     },
+     {
+      "if": {
+       "properties": {
+        "renderer": {
+         "const": "code"
+        }
+       }
+      },
+      "then": {
+       "properties": {
+        "source": {
+         "required": [
+          "language",
+          "code"
+         ],
+         "properties": {
+          "language": {
+           "type": "string"
+          },
+          "code": {
+           "type": "string",
+           "minLength": 1
+          }
+         }
+        }
+       }
+      }
+     },
+     {
+      "if": {
+       "properties": {
+        "renderer": {
+         "const": "logo"
+        }
+       }
+      },
+      "then": {
+       "properties": {
+        "source": {
+         "required": [
+          "names"
+         ],
+         "properties": {
+          "names": {
+           "type": "array",
+           "minItems": 1,
+           "maxItems": 6,
+           "items": {
+            "type": "string"
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     {
+      "if": {
+       "properties": {
+        "renderer": {
+         "const": "ai_image"
+        }
+       }
+      },
+      "then": {
+       "properties": {
+        "source": {
+         "required": [
+          "prompt",
+          "aspect"
+         ],
+         "properties": {
+          "prompt": {
+           "type": "string"
+          },
+          "aspect": {
+           "type": "string"
+          },
+          "style": {
+           "type": "string"
+          },
+          "negative": {
+           "type": "string"
+          }
+         }
+        }
+       }
+      }
+     },
+     {
+      "if": {
+       "properties": {
+        "renderer": {
+         "const": "scene"
+        }
+       }
+      },
+      "then": {
+       "properties": {
+        "source": {
+         "required": [
+          "type"
+         ]
+        }
+       }
+      }
+     }
+    ]
+   }
+  },
+  "sections": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "section",
+     "visual",
+     "reason"
+    ],
+    "additionalProperties": false,
+    "properties": {
+     "section": {
+      "type": "string",
+      "minLength": 1
+     },
+     "visual": {
+      "const": "none"
+     },
+     "reason": {
+      "type": "string",
+      "minLength": 3
+     }
+    }
+   }
+  }
+ }
+}

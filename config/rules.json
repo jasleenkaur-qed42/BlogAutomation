@@ -1,0 +1,135 @@
+{
+  "forbidden_terms": [
+    "guaranteed results",
+    "best in the world",
+    "revolutionary"
+  ],
+  "required_terms": [],
+  "word_count_tolerance": 10,
+  "title": {
+    "min": 30,
+    "max": 80
+  },
+  "meta_description": {
+    "min": 120,
+    "max": 160
+  },
+  "slug_pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+  "required_structure": {
+    "h1_count": 1,
+    "intro_marker": null,
+    "cta_marker": null,
+    "min_h2_count": 3,
+    "min_h2_words": 20,
+    "require_introduction": true,
+    "min_intro_words": 10,
+    "require_conclusion": true,
+    "conclusion_pattern": "conclusion|summary|takeaway|final thoughts|wrapping up",
+    "require_references_when_required": true,
+    "references_pattern": "references|further reading|sources",
+    "require_faq": true,
+    "faq_pattern": "faq|frequently asked|common questions",
+    "min_faq_questions": 5,
+    "max_faq_questions": 7
+  },
+  "placeholder_patterns": [
+    "TODO",
+    "TBD",
+    "(?i)lorem ipsum",
+    "(?i)\\[citation needed\\]",
+    "(?i)\\[insert[^\\]]*\\]"
+  ],
+  "secret_pii_patterns": [
+    "AKIA[0-9A-Z]{16}",
+    "(?i)api[_-]?key\\s*[:=]\\s*\\S{8,}",
+    "\\b\\d{3}-\\d{2}-\\d{4}\\b",
+    "xox[abp]-[0-9A-Za-z-]+"
+  ],
+  "required_checklist": [
+    "factual_accuracy",
+    "tone_matches_guidelines",
+    "answers_brief",
+    "no_unsupported_claims",
+    "audience_fit_check",
+    "title_matches_intro",
+    "skim_test",
+    "conclusion_lands_thought",
+    "sentence_boundaries",
+    "code_correctness",
+    "human_words",
+    "humans_and_machines",
+    "beats_the_docs",
+    "original_insight",
+    "so_what",
+    "voice_positive_framing",
+    "voice_active"
+  ],
+  "similarity_source": null,
+  "claim_patterns": [
+    "(?i)\\bv\\d+(\\.\\d+)+\\b",
+    "(?i)\\bversion\\s+\\d",
+    "(?i)\\b\\d+(\\.\\d+)?\\s?%\\s+(faster|slower|smaller|larger|lower|higher|more|less|reduction|improvement)",
+    "(?i)\\bbenchmarks?\\b",
+    "(?i)\\blatency\\b",
+    "(?i)\\bCVE-\\d{4}-\\d+\\b",
+    "(?i)\\b(vulnerabilit|exploit)"
+  ],
+  "rubric": {
+    "technical_accuracy": 20,
+    "technical_depth": 15,
+    "practical_usefulness": 15,
+    "originality": 15,
+    "structure_clarity": 10,
+    "examples_implementation": 10,
+    "tradeoffs_limitations": 5,
+    "references_support": 5,
+    "seo": 3,
+    "audience_fit": 2
+  },
+  "hard_gate_dimensions": [
+    "technical_accuracy",
+    "originality"
+  ],
+  "flagged_words": [
+    "empower",
+    "enable",
+    "leverage",
+    "utilize",
+    "seamless",
+    "robust",
+    "cutting-edge",
+    "delve",
+    "unlock",
+    "elevate",
+    "foster",
+    "navigate the landscape",
+    "in today's fast-paced world",
+    "game-changing",
+    "comprehensive solution",
+    "testament",
+    "realm",
+    "tapestry",
+    "embark",
+    "harness",
+    "streamline",
+    "facilitate",
+    "paradigm",
+    "synergy",
+    "holistic",
+    "dive in",
+    "supercharge",
+    "revolutionize",
+    "plethora",
+    "myriad"
+  ],
+  "ban_em_dash": true,
+  "injection_patterns": [
+    "ignore\\s+(?:all\\s+|any\\s+)?(?:the\\s+)?(?:previous|prior|above|earlier)\\s+(?:instructions?|prompts?|rules?)",
+    "disregard\\s+(?:all\\s+|any\\s+)?(?:the\\s+)?(?:previous|prior|above|earlier|your)\\s+(?:instructions?|prompts?|rules?)",
+    "you\\s+are\\s+now\\s+(?:a|an|the|in)\\b",
+    "(?:reveal|print|show|repeat|leak)\\s+(?:your|the)\\s+(?:system\\s+)?(?:prompt|instructions)",
+    "(?:system|assistant|developer)\\s*:\\s*(?:you|ignore|override)",
+    "(?:note|message|instructions?)\\s+(?:to|for)\\s+(?:the\\s+)?(?:ai|llm|assistant|reviewer|writer|agent|model)s?\\b",
+    "(?:mark|score|rate|approve)\\s+(?:this|the)\\s+(?:draft|post|article)\\s+(?:as\\s+)?(?:pass|passed|approved|perfect|100)"
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "enabled": true,
+  "_comment_image_backend": "Default for ai_image visuals (hero, concept): 'mcp' generates them through the media-pipeline (Gemini) MCP; 'placeholder' gives IMAGE TO ADD boxes with the prompt. A brief's visuals.image_source (gemini or prompt) overrides it per run.",
+  "image_backend": "mcp",
+  "intents": {
+    "show_ui": [
+      "screenshot",
+      "scene"
+    ],
+    "show_process": [
+      "mermaid"
+    ],
+    "show_architecture": [
+      "mermaid"
+    ],
+    "show_sequence": [
+      "mermaid"
+    ],
+    "show_relationships": [
+      "mermaid"
+    ],
+    "compare": [
+      "svg"
+    ],
+    "timeline": [
+      "svg"
+    ],
+    "layers": [
+      "svg"
+    ],
+    "annotate": [
+      "svg"
+    ],
+    "show_data": [
+      "chart"
+    ],
+    "show_code": [
+      "code"
+    ],
+    "brand": [
+      "logo"
+    ],
+    "hero": [
+      "ai_image"
+    ],
+    "concept": [
+      "ai_image"
+    ]
+  },
+  "budget": {
+    "max_per_1000_words": 3.0,
+    "min_allowed": 3,
+    "max_ai_image": 4,
+    "max_screenshot": 3
+  },
+  "image_prompt": {
+    "min_chars": 20,
+    "max_chars": 900,
+    "aspects": [
+      "16:9",
+      "4:3",
+      "3:2",
+      "1:1"
+    ]
+  },
+  "assets": {
+    "min_width": 600,
+    "max_width": 1600,
+    "max_bytes_each": 1500000,
+    "max_bytes_total": 8000000,
+    "min_pixel_stddev": 3.0
+  }
+}

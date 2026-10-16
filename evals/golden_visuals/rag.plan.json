@@ -1,0 +1,64 @@
+{
+ "visuals": [
+  {
+   "id": "v1",
+   "section": "How the pipeline fits together",
+   "intent": "show_architecture",
+   "renderer": "mermaid",
+   "placement": {
+    "after": "heading"
+   },
+   "title": "RAG architecture",
+   "alt": "Indexing and query paths of a RAG pipeline",
+   "caption": "Figure 1: Indexing and query paths in a RAG pipeline.",
+   "source": {
+    "mermaid": "flowchart LR\n  Docs --> Chunks\n  Chunks --> Embeddings\n  Embeddings --> Index\n  Question --> Retrieve\n  Index --> Retrieve\n  Retrieve --> Model\n  Model --> Answer"
+   },
+   "rationale": "Two connected paths"
+  },
+  {
+   "id": "v2",
+   "section": "Choosing a chunking strategy",
+   "intent": "compare",
+   "renderer": "svg",
+   "placement": {
+    "after": "heading"
+   },
+   "title": "Chunking strategies",
+   "alt": "Comparison of three chunking strategies",
+   "caption": "Figure 2: Three chunking strategies compared.",
+   "source": {
+    "template": "comparison",
+    "data": {
+     "left": "Fixed-size",
+     "right": "Structure-aware",
+     "rows": [
+      [
+       "Meaning",
+       "Can split",
+       "Preserved"
+      ],
+      [
+       "Effort",
+       "Low",
+       "Higher"
+      ]
+     ]
+    }
+   },
+   "rationale": "Options compared on shared dimensions"
+  }
+ ],
+ "sections": [
+  {
+   "section": "Conclusion",
+   "visual": "none",
+   "reason": "Prose summary"
+  },
+  {
+   "section": "A retrieval sketch",
+   "visual": "none",
+   "reason": "The draft already shows this code"
+  }
+ ]
+}

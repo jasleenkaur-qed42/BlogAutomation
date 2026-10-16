@@ -1,0 +1,24 @@
+The skill above was written for an interactive chat. In this workflow you run every check yourself, non-interactively, and your output is the review JSON from your agent instructions. These rules override the skill's steps 2, 4 (pass/flag/fail wording) and 6 (report format) and its report template.
+
+- Audience (skill step 2): use the brief's `audience_type` (community, cto or business). If it is missing, infer it from `audience`, name your inference in the evidence of `audience_fit_check`, and never ask.
+- Gate questions (step 3): answer both in the `summary`. An empty answer is a HIGH issue under `so_what`.
+- Run all twelve checks and the three voice passes. Quote the draft's lines in each issue's `anchor`; put the rewrite in the issue `description`. Never invent experience, numbers or quotes in a rewrite. Where the skill says to prompt the writer for their own experience, raise a MEDIUM issue that names the missing insight; the writer is an AI and must build it from reasoning and verified sources, never fabricate experience.
+- The checklist item for each check (use exactly these ids):
+  - Check 1 → `audience_fit_check`
+  - Check 2 → `title_matches_intro`
+  - Check 3 → `skim_test`
+  - Check 4 → `conclusion_lands_thought`
+  - Check 5 → `sentence_boundaries`
+  - Check 6 → `code_correctness` (no code: `pass: true`, evidence "skipped, no code")
+  - Check 7 → `human_words` (flagged words and em dashes are also rejected by code; you judge the rest: sentences no human would say aloud, AI rhythm)
+  - Check 8 → `factual_accuracy` and `no_unsupported_claims`, plus `claim_checks` (one row per factual claim, number, date, version or named reference; a claim is UNSUPPORTED only when you cannot find an adequate source for it yourself; a correct claim the draft simply does not cite is SUPPORTED with the source you found, and the missing citation is an `accuracy` issue on `references_support`)
+  - Check 9 → `humans_and_machines` (FAQ asks genuine next questions and does not restate the body; descriptive headings; a TLDR when the post is long; one clear claim near the top; sentence-case headings, see the `title_case_headings` signal)
+  - Check 10 → `beats_the_docs` (name the reference page in the evidence)
+  - Check 11 → `original_insight` (name the quotable insight in the evidence)
+  - Check 12 → `so_what`
+  - V1 and V2 → `voice_positive_framing`
+  - V3 → `voice_active`
+- Mapping: a check that would be a skill **fail** is `pass: false` with an issue rated HIGH. A skill **flag** is `pass: true` with a MEDIUM issue. A **pass** needs no issue. Scores follow the same mapping: only a fail can put a hard-gate dimension below its minimum (see Score consistency); a flag lowers the score but never to a failing one. Put the V1, V2 and V3 counts in the evidence of the voice items. Give every issue the `category` of the check that found it, using exactly one of: `audience` (check 1), `title` (2), `skim` (3), `conclusion` (4), `sentences` (5), `code` (6), `words` (7), `accuracy` (8, any unsupported or wrong claim), `structure` (9), `originality` (10 and 11, including a missing or thin original insight or an unused `original_angle`), `payoff` (12), `tone` (voice passes and tone). One issue covers one check: when the same passage fails two checks (for example a false statement that is also broken code, which fails checks 6 and 8), raise one issue per check, each with that check's category, and point each failed checklist item at the issue of its own check.
+- Rubric dimensions on issues: checks 1 and 12 → `audience_fit` or `practical_usefulness`; 2 to 5 and 9 → `structure_clarity`; 6 → `examples_implementation` or `technical_accuracy`; 8 → `technical_accuracy` or `references_support`; 10 and 11 → `originality`; 9 SEO points → `seo`. Tone and voice issues keep `category: tone`; only their dimension varies: a register that does not suit the reader (hype, pitch or vendor tone) → `audience_fit`; sentence-level voice findings (V1 to V3) → `structure_clarity`. Check 7 issues keep `category: words` → `structure_clarity`. Checks 10 and 11 judge insight, not correctness: a wrong claim or broken code is a check 6 or 8 issue and never lowers `originality`.
+- Skip the skill's verdict (ready or not ready) and the scorecard layout: the workflow computes pass or fail from your scores, checklist and gates. Put a one-line scorecard (check, pass, flag or fail) in the `summary`.
+- Assess mode (the prompt says so): you review the author's original before a rewrite. Severities drive the writer's fix list and a summary shown to the user; there is no pass or fail gate on this review, but the JSON must still be complete and consistent.

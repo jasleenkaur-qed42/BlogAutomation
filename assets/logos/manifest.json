@@ -1,0 +1,153 @@
+{
+ "aliases": {
+  "gcp": "googlecloud",
+  "js": "javascript",
+  "k8s": "kubernetes",
+  "next": "nextdotjs",
+  "nextjs": "nextdotjs",
+  "node": "nodedotjs",
+  "nodejs": "nodedotjs",
+  "postgres": "postgresql",
+  "react native": "react",
+  "reactnative": "react",
+  "ts": "typescript"
+ },
+ "icons": {
+  "android": {
+   "file": "android.svg",
+   "hex": "3DDC84",
+   "title": "Android"
+  },
+  "anthropic": {
+   "file": "anthropic.svg",
+   "hex": "191919",
+   "title": "Anthropic"
+  },
+  "apple": {
+   "file": "apple.svg",
+   "hex": "000000",
+   "title": "Apple"
+  },
+  "docker": {
+   "file": "docker.svg",
+   "hex": "2496ED",
+   "title": "Docker"
+  },
+  "drupal": {
+   "file": "drupal.svg",
+   "hex": "0678BE",
+   "title": "Drupal"
+  },
+  "expo": {
+   "file": "expo.svg",
+   "hex": "1C2024",
+   "title": "Expo"
+  },
+  "figma": {
+   "file": "figma.svg",
+   "hex": "F24E1E",
+   "title": "Figma"
+  },
+  "firebase": {
+   "file": "firebase.svg",
+   "hex": "DD2C00",
+   "title": "Firebase"
+  },
+  "git": {
+   "file": "git.svg",
+   "hex": "F03C2E",
+   "title": "Git"
+  },
+  "github": {
+   "file": "github.svg",
+   "hex": "181717",
+   "title": "GitHub"
+  },
+  "google": {
+   "file": "google.svg",
+   "hex": "4285F4",
+   "title": "Google"
+  },
+  "googlecloud": {
+   "file": "googlecloud.svg",
+   "hex": "4285F4",
+   "title": "Google Cloud"
+  },
+  "javascript": {
+   "file": "javascript.svg",
+   "hex": "F7DF1E",
+   "title": "JavaScript"
+  },
+  "kubernetes": {
+   "file": "kubernetes.svg",
+   "hex": "326CE5",
+   "title": "Kubernetes"
+  },
+  "mongodb": {
+   "file": "mongodb.svg",
+   "hex": "47A248",
+   "title": "MongoDB"
+  },
+  "nextdotjs": {
+   "file": "nextdotjs.svg",
+   "hex": "000000",
+   "title": "Next.js"
+  },
+  "nodedotjs": {
+   "file": "nodedotjs.svg",
+   "hex": "5FA04E",
+   "title": "Node.js"
+  },
+  "postgresql": {
+   "file": "postgresql.svg",
+   "hex": "4169E1",
+   "title": "PostgreSQL"
+  },
+  "python": {
+   "file": "python.svg",
+   "hex": "3776AB",
+   "title": "Python"
+  },
+  "react": {
+   "file": "react.svg",
+   "hex": "61DAFB",
+   "title": "React"
+  },
+  "redis": {
+   "file": "redis.svg",
+   "hex": "FF4438",
+   "title": "Redis"
+  },
+  "supabase": {
+   "file": "supabase.svg",
+   "hex": "3FCF8E",
+   "title": "Supabase"
+  },
+  "tailwindcss": {
+   "file": "tailwindcss.svg",
+   "hex": "06B6D4",
+   "title": "Tailwind CSS"
+  },
+  "typescript": {
+   "file": "typescript.svg",
+   "hex": "3178C6",
+   "title": "TypeScript"
+  },
+  "vercel": {
+   "file": "vercel.svg",
+   "hex": "000000",
+   "title": "Vercel"
+  },
+  "vite": {
+   "file": "vite.svg",
+   "hex": "9135FF",
+   "title": "Vite"
+  },
+  "wordpress": {
+   "file": "wordpress.svg",
+   "hex": "21759B",
+   "title": "WordPress"
+  }
+ },
+ "source": "simple-icons 16.34.0 (CC0-1.0)"
+}
